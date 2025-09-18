@@ -147,6 +147,7 @@ export default function UserRides() {
                 {rides.ongoing.map((ride) => (
                   <div
                     key={ride.id}
+                    onClick={()=>navigate(`/ride/${ride.id}/driver`)}
                     className="bg-white rounded-xl shadow-sm p-5 border border-gray-100 hover:shadow-md transition-shadow"
                   >
                     <div className="flex justify-between items-start mb-4">
@@ -245,6 +246,7 @@ export default function UserRides() {
                 {rides.completed.map((ride) => (
                   <div
                     key={ride.id}
+                    onClick={()=>navigate(`/ride/${ride.id}/driver`)}
                     className="bg-white rounded-xl shadow-sm p-5 border border-gray-100 hover:shadow-md transition-shadow"
                   >
                     <div className="flex justify-between items-start mb-4">
