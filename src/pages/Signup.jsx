@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { FaUser, FaEnvelope, FaPhone, FaKey, FaCar,  } from 'react-icons/fa';
-
+import { useNavigate } from 'react-router-dom';
 const Signup = () => {
   const { signup } = useAuth();
   const [name, setName] = useState("");
@@ -10,7 +10,7 @@ const Signup = () => {
   const [role, setRole] = useState("rider");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+const navigate = useNavigate();
    const handleSubmit = async (e) => {
   e.preventDefault();
   setIsLoading(true);
