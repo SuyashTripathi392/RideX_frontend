@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await api.post("/auth/signup", formData);
       if (res.data.success) {
-        toast.success("Signup successful");
+        toast.success("Account create  successfull! please login with your email and password");
         return true;
       } else {
         toast.error(res.data.message);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { FaUser, FaEnvelope, FaPhone, FaKey, FaCar,  } from 'react-icons/fa';
-
+import { useNavigate } from 'react-router-dom';
 const Signup = () => {
   const { signup } = useAuth();
   const [name, setName] = useState("");
@@ -10,21 +10,26 @@ const Signup = () => {
   const [role, setRole] = useState("rider");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+const navigate = useNavigate();
+   const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsLoading(true);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    
-    try {
-      await signup({
-        name, role, email, password, phone
-      });
-    } catch (error) {
-      console.error("Signup error:", error);
-    } finally {
-      setIsLoading(false);
+  try {
+    const success = await signup({
+      name, role, email, password, phone
+    });
+
+    if (success) {
+      navigate("/login"); 
     }
-  };
+  } catch (error) {
+    console.error("Signup error:", error);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
